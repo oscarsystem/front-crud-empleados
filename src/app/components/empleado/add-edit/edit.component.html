@@ -1,0 +1,63 @@
+<div mat-dialog-title>
+    <h1>Empleado Form</h1>
+</div>
+<form >
+<div mat-dialog-content class="content">
+    <div class="row">
+        <mat-form-field appearance="fill">
+          <mat-label>Nombre</mat-label>
+          <input matInput placeholder="Juan Andres Parra" name="nombres" [(ngModel)]="empleadoCrear.nombres" required >
+          <mat-hint>Ingrese su nombre completo</mat-hint>
+          <mat-error *ngIf="requeridoFormControl.hasError('required')">
+            Nombre es <strong>requerido</strong>
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <mat-label>Email</mat-label>
+          <input type="email" matInput [formControl]="emailFormControl" [errorStateMatcher]="matcher" [(ngModel)]="empleadoCrear.email"
+                 placeholder="juan.parra@example.com">
+          <mat-hint>Errors appear instantly!</mat-hint>
+          <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+            Ingrese correo valido
+          </mat-error>
+          <mat-error *ngIf="emailFormControl.hasError('required')">
+            Email is <strong>requerido</strong>
+          </mat-error>
+        </mat-form-field>
+
+    </div>
+    <div class="row">
+        <mat-form-field appearance="fill">
+          <mat-label>Edad</mat-label>
+          <input matInput placeholder="30" type="number" name="edad" [(ngModel)]="empleadoCrear.edad" min="18" max="100" required>
+          <mat-hint>Ingrese edad del empleado</mat-hint>
+          <mat-error *ngIf="edadFormControl.hasError('required')">
+            Ingrese edad entre 18 y 100
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Cargo</mat-label>
+            <mat-select name="cargo" [(ngModel)]="empleadoCrear.cargo" required>
+              <mat-option *ngFor="let cargo of listCargos" [value]="cargo">
+                {{cargo.nombre}}
+              </mat-option>
+          </mat-select>
+          <mat-error *ngIf="requeridoFormControl.hasError('required')">
+            Cargo es <strong>requerido</strong>
+          </mat-error>
+        </mat-form-field>
+    </div>
+
+</div>
+<div mat-dialog-actions class="action">
+    <button mat-raised-button type="submit" [mat-dialog-close]="false"> Cancelar </button>
+    <button mat-raised-button color="primary" type="submit" (click)="empleadoAccion()" 
+      [disabled]="!empleadoCrear.nombres || !empleadoCrear.email || !empleadoCrear.edad || !empleadoCrear.cargo
+                    || empleadoCrear.edad<18 || empleadoCrear.edad > 100 || (emailFormControl.hasError('email'))">
+       {{data ? 'Actualizar' : 'Crear'}} 
+    </button>
+</div>
+
+</form>

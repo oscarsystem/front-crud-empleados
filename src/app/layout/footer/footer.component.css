@@ -1,0 +1,20 @@
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+.text{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer-container{
+  width: 100%;
+}
+
+.textDescription{
+  font-size: 70%;
+}
