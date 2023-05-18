@@ -1,19 +1,26 @@
 # Etapa de compilación
 FROM node:latest AS build
 
-WORKDIR /usr/local/app
+RUN mkdir -p /app
 
-COPY ./ ./usr/local/app
-
+WORKDIR /app
+COPY package.json /app
 RUN npm install
+COPY . /app
+RUN npm run build --prod
 
-RUN npm run build 
 
+
+#WORKDIR /usr/local/app
+#COPY ./ ./usr/local/app
+#RUN npm install
+#RUN npm run build 
+#RUN ng build
 
 FROM nginx:latest
 # Copiar los archivos compilados de la etapa de compilación al directorio de despliegue de Nginx
-COPY --from=build usr/local/app/dist/front-crud-empleados /usr/share/nginx/html
-
+#COPY --from=build usr/local/app/dist/front-crud-empleados /usr/share/nginx/html
+COPY --from=build app/dist/front-crud-empleados /usr/share/nginx/html
 # Exponer el puerto 80
 EXPOSE 80
 
