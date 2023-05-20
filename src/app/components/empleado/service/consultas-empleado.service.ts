@@ -9,7 +9,7 @@ import { Empleado } from '../models/empleado';
 })
 export class ConsultasEmpleadoService {
 
-  API_URL = 'http://localhost:8080/api/empleado/';
+  API_URL = 'https://crud-empleados-kgpkmdskza-uc.a.run.app/api/empleado/';
 
   constructor(private http: HttpClient) { }
 
