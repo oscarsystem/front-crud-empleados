@@ -7,6 +7,7 @@ WORKDIR /app
 COPY package.json /app
 RUN npm install
 COPY . /app
+#COPY ..
 RUN npm run build --prod
 
 
@@ -22,5 +23,6 @@ FROM nginx:latest
 #COPY --from=build usr/local/app/dist/front-crud-empleados /usr/share/nginx/html
 COPY --from=build app/dist/front-crud-empleados /usr/share/nginx/html
 # Exponer el puerto 80
+COPY nginx.conf /etc/nginx/nginx.conf
 EXPOSE 80
-
+CMD ["nginx", "-g", "daemon off;"]
