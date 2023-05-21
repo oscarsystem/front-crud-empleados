@@ -7,7 +7,8 @@ import { catchError } from 'rxjs/operators';
 })
 export class ConsultasCargoService {
 
-  API_URL = 'http://localhost:8080/api/cargo/';
+  //API_URL = 'http://localhost:8080/api/cargo/';
+  API_URL = 'https://crud-empleados-kgpkmdskza-uc.a.run.app/api/cargo/';
 
   constructor(private http: HttpClient) { }
 
