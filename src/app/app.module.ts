@@ -18,6 +18,7 @@ import { MatTableModule } from '@angular/material/table';
 import { HttpClientModule } from '@angular/common/http';
 import { FooterComponent } from './layout/footer/footer.component';
 import { HeaderComponent } from './layout/header/header.component';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { HeaderComponent } from './layout/header/header.component';
     MatSelectModule,
     MatTableModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatProgressSpinnerModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [],

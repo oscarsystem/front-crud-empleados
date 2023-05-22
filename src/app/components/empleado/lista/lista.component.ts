@@ -13,6 +13,7 @@ export class ListaComponent {
   listEmpleados: any = [];
   displayedColumns: string[] = ['id', 'nombres', 'edad', 'cargo', 'email', 'action'];
   tamanoListaEmpleados: number = 0;
+  isLoading = true;
 
   constructor(private empleadoService: ConsultasEmpleadoService,
     private dialog: MatDialog){}
@@ -27,6 +28,7 @@ export class ListaComponent {
       res => {
         this.listEmpleados = res;
         this.tamanoListaEmpleados = res.length;
+        this.isLoading = false;
       },
       err => console.log(err)
     );
