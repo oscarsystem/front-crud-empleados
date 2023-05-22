@@ -41,7 +41,7 @@ RUN npm ci
 COPY ./ ./
 RUN npm run build
 
-FROM nginx:1.23.0-alpine
+FROM nginx:latest
 EXPOSE 80
 COPY nginx.conf /etc/nginx/nginx.conf
 COPY --from=build /app/dist/ngcloudrundemo /usr/share/nginx/html
