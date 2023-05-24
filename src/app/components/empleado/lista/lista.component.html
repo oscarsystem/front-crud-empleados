@@ -2,8 +2,6 @@
   <p>
     <button color="primary" mat-raised-button (click)="openAddEditForm()" [disabled]="tamanoListaEmpleados > 4 ">ADD Empleado</button>
   </p>
-  
-    <mat-progress-spinner color="primary" mode="indeterminate" *ngIf="isLoading"></mat-progress-spinner>
     <table mat-table [dataSource]="listEmpleados" class="mat-elevation-z8">
         
         <ng-container matColumnDef="id">
