@@ -1,10 +1,10 @@
 <div class="main-body">
   <p>
-    <button color="primary" mat-raised-button (click)="openAddEditForm()" [disabled]="tamanoListaEmpleados > 4 ">ADD Empleado</button>
+    <button color="primary" mat-raised-button (click)="openAddEditForm()" [disabled]="tamanoListaEmpleados > 4 || isLoading">ADD Empleado</button>
   </p>
   
     <mat-progress-spinner color="primary" mode="indeterminate" *ngIf="isLoading"></mat-progress-spinner>
-    <table mat-table [dataSource]="listEmpleados" class="mat-elevation-z8">
+    <table mat-table [dataSource]="listEmpleados" class="mat-elevation-z8"  *ngIf="!isLoading">
         
         <ng-container matColumnDef="id">
           <th mat-header-cell *matHeaderCellDef> id </th>
